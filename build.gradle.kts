@@ -20,14 +20,14 @@ repositories {
 }
 
 dependencies {
+    compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.5.32")
     api("com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT")
-    api("org.jetbrains.kotlin:kotlin-stdlib:1.5.32")
 }
 
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "17"
+        kotlinOptions.jvmTarget = "16"
     }
     jar {
         from(
@@ -43,9 +43,16 @@ tasks {
     }
 }
 bukkit {
-    main = "$group.${rootProject.name}.Main"
+    main = "$group.${rootProject.name.toLowerCase()}.CommandBlackList"
     apiVersion = "1.17"
     load = BukkitPluginDescription.PluginLoadOrder.STARTUP
     authors = listOf("ddPn08")
     defaultPermission = BukkitPluginDescription.Permission.Default.OP
+
+    commands {
+        register("commandblacklist"){
+            aliases = listOf("cbl")
+            permission = "CommandBlackList.ignore"
+        }
+    }
 }

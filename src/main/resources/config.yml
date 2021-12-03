@@ -1,0 +1,26 @@
+# params
+#
+# commands : アクションを実行するコマンドのリスト
+#   command : 対象のコマンド。ここに入力された値から始まるコマンドが実行された場合、指定されたアクションが実行されます。
+#   actions : 実行するアクション。actionsで定義したアクションの名前を指定してください。
+
+
+commands:
+  - command: /ban
+    actions:
+      - Kick_Sender
+
+
+
+# params
+#
+# actions : コマンドが実行されたときに実行するアクション
+#   type : アクションの種類。 いまのところ command のみ
+#     [command] 指定されたコマンドを実行します
+#   data : アクションのデータ
+#     type が command の場合、実行するコマンド
+
+actions:
+  - name: Kick_Sender
+    type: command
+    data: /kick ${sender} A forbidden command has been sent.
